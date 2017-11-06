@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM solict/general-purpose-system-distro:debian7_standard
+FROM stafli/stafli.base.system:debian7_base
 MAINTAINER Luís Pedro Algarvio <lp.algarvio@gmail.com>
 
 #

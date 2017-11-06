@@ -41,7 +41,7 @@ services:
       - "architecture=$BUILD_ARCH"
       - "org.label-schema.version=$BUILD_VERSION"
       - "org.label-schema.build-date=$BUILD_DATE"
-    image: "solict/high-performance-php-stack:centos7_redis32"
+    image: "stafli/stafli.redis.cache:centos7_redis32"
     build:
       context: "./dockerfiles"
       dockerfile: "redis32.dockerfile"

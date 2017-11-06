@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM solict/general-purpose-system-distro:centos7_standard
+FROM stafli/stafli.base.system:centos7_base
 MAINTAINER Luís Pedro Algarvio <lp.algarvio@gmail.com>
 
 #
