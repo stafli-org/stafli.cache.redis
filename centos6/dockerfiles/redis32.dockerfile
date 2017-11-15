@@ -20,7 +20,6 @@
 #
 
 FROM stafli/stafli.base.system:centos6_base
-MAINTAINER Luís Pedro Algarvio <lp.algarvio@gmail.com>
 
 #
 # Arguments
