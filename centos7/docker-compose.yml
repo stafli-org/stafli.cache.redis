@@ -72,8 +72,6 @@ services:
         app_redis_limit_memory: "134217728"
     logging:
       driver: "json-file"
-    networks:
-      - backend
     volumes:
       - redis32_data:/var/lib/redis
     ports:
@@ -81,15 +79,6 @@ services:
       - "6379"
     working_dir: "/tmp"
     command: "/usr/bin/supervisord -c /etc/supervisord.conf --nodaemon"
-
-#
-# Networks
-#
-networks:
-  default:
-    driver: "bridge"
-  backend:
-    driver: "bridge"
 
 #
 # Volumes
