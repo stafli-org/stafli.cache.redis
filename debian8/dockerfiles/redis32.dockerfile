@@ -94,7 +94,7 @@ RUN printf "Updading Supervisor configuration...\n"; \
     # /etc/supervisor/conf.d/init.conf \
     file="/etc/supervisor/conf.d/init.conf"; \
     printf "\n# Applying configuration for ${file}...\n"; \
-    perl -0p -i -e "s>supervisorctl start dropbear;>supervisorctl start dropbear; supervisorctl start redis;>" ${file}; \
+    perl -0p -i -e "s>supervisorctl start crond;>supervisorctl start crond; supervisorctl start redis;>" ${file}; \
     printf "Done patching ${file}...\n"; \
     \
     # /etc/supervisor/conf.d/redis.conf \

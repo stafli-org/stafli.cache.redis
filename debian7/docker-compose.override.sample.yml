@@ -36,6 +36,5 @@ services:
         app_redis_limit_concurent: "256"
         app_redis_limit_memory: "134217728"
     ports:
-      - "10022"
       - "6379"
 
