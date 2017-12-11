@@ -27,7 +27,7 @@ version: '2'
 #
 services:
 
-  redis32:
+  centos7_redis32_cache:
     labels:
       - "org.label-schema.schema-version=1.0"
       - "org.label-schema.name=$PROJECT_NAME"
@@ -54,7 +54,7 @@ services:
       - "org.label-schema.os-architecture=$BUILD_ARCH"
       - "org.label-schema.version=$BUILD_VERSION"
       - "org.label-schema.build-date=$BUILD_DATE"
-    image: "stafli/stafli.redis.cache:centos7_redis32"
+    image: "${IMAGE_URL_PREFIX}:centos7_redis32"
     build:
       context: "./dockerfiles"
       dockerfile: "redis32.dockerfile"
@@ -73,7 +73,7 @@ services:
     logging:
       driver: "json-file"
     volumes:
-      - redis32_data:/var/lib/redis
+      - centos7_redis32_cache_data:/var/lib/redis
     ports:
       - "6379"
     working_dir: "/tmp"
@@ -83,6 +83,6 @@ services:
 # Volumes
 #
 volumes:
-  redis32_data:
+  centos7_redis32_cache_data:
     driver: "local"
 

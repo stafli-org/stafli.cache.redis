@@ -27,7 +27,7 @@ version: '2'
 #
 services:
 
-  redis32:
+  centos7_redis32_cache:
     build:
       args:
         app_redis_listen_port: "6379"
