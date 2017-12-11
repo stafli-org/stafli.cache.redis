@@ -27,7 +27,7 @@ version: '2'
 #
 services:
 
-  debian8_redis32_cache:
+  cache_redis32_debian8:
     build:
       args:
         app_redis_listen_port: "6379"

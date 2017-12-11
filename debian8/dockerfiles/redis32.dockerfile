@@ -19,7 +19,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM stafli/stafli.base.system:debian8_base
+FROM stafli/stafli.system.base:base10_debian8
 
 #
 # Arguments

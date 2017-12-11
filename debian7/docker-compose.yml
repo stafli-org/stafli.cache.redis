@@ -27,7 +27,7 @@ version: '2'
 #
 services:
 
-  debian7_redis32_cache:
+  cache_redis32_debian7:
     labels:
       - "org.label-schema.schema-version=1.0"
       - "org.label-schema.name=$PROJECT_NAME"
@@ -54,7 +54,7 @@ services:
       - "org.label-schema.os-architecture=$BUILD_ARCH"
       - "org.label-schema.version=$BUILD_VERSION"
       - "org.label-schema.build-date=$BUILD_DATE"
-    image: "${IMAGE_URL_PREFIX}:debian7_redis32"
+    image: "${IMAGE_URL_PREFIX}:redis32_debian7"
     build:
       context: "./dockerfiles"
       dockerfile: "redis32.dockerfile"
@@ -73,7 +73,7 @@ services:
     logging:
       driver: "json-file"
     volumes:
-      - debian7_redis32_cache_data:/var/lib/redis
+      - cache_redis32_debian7_data:/var/lib/redis
     ports:
       - "6379"
     working_dir: "/tmp"
@@ -83,6 +83,6 @@ services:
 # Volumes
 #
 volumes:
-  debian7_redis32_cache_data:
+  cache_redis32_debian7_data:
     driver: "local"
 
