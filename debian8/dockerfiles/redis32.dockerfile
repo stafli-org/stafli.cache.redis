@@ -24,14 +24,14 @@
 #
 
 # Base image to use
-FROM stafli/stafli.system.base:base10_debian8
+FROM stafli/stafli.init.supervisor:supervisor30_debian8
 
 # Labels to apply
-LABEL description="Stafli Redis Cache System (stafli/stafli.cache.redis), Based on Stafli Base System (stafli/stafli.system.base)" \
+LABEL description="Stafli Redis Cache System (stafli/stafli.cache.redis), Based on Stafli Supervisor Init (stafli/stafli.init.supervisor)" \
       maintainer="lp@algarvio.org" \
       org.label-schema.schema-version="1.0.0-rc.1" \
       org.label-schema.name="Stafli Redis Cache System (stafli/stafli.cache.redis)" \
-      org.label-schema.description="Based on Stafli Base System (stafli/stafli.system.base)" \
+      org.label-schema.description="Based on Stafli Supervisor Init (stafli/stafli.init.supervisor)" \
       org.label-schema.keywords="stafli, redis, cache, debian, centos" \
       org.label-schema.url="https://stafli.org/" \
       org.label-schema.license="GPLv3" \
@@ -149,6 +149,12 @@ RUN printf "Updading Supervisor configuration...\n" && \
 command=/bin/bash -c \"\$(which redis-server) /etc/redis/redis.conf --daemonize no\"\n\
 autostart=false\n\
 autorestart=true\n\
+stdout_logfile=/dev/stdout\n\
+stdout_logfile_maxbytes=0\n\
+stderr_logfile=/dev/stderr\n\
+stderr_logfile_maxbytes=0\n\
+stdout_events_enabled=true\n\
+stderr_events_enabled=true\n\
 \n" > ${file} && \
     printf "Done patching ${file}...\n" && \
     \
@@ -166,6 +172,8 @@ RUN printf "Updading Redis configuration...\n" && \
     perl -0p -i -e "s># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.\ndaemonize .*\n># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.\ndaemonize no\n>" ${file} && \
     # change log level \
     perl -0p -i -e "s># warning (only very important / critical messages are logged)\nloglevel .*\n># warning (only very important / critical messages are logged)\nloglevel ${app_redis_loglevel}\n>" ${file} && \
+    # disable log file \
+    perl -0p -i -e "s># output for logging but daemonize, logs will be sent to /dev/null\nlogfile ># output for logging but daemonize, logs will be sent to /dev/null\n#logfile >" ${file} && \
     # change interface \
     perl -0p -i -e "s># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbind .*\n># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbind ${app_redis_listen_addr}\n>" ${file} && \
     # change port \
