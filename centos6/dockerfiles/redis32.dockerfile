@@ -82,18 +82,9 @@ ARG app_redis_limit_memory="134217728"
 # Packages
 #
 
-# Add foreign repositories and GPG keys
-#  - remi-release: for Les RPM de remi pour Enterprise Linux 6 (Remi)
 # Install redis packages
 #  - redis: for redis-server and redis-cli, the Redis data structure server and client
 RUN printf "Installing repositories and packages...\n" && \
-    \
-    printf "Install the foreign repositories and refresh the GPG keys...\n" && \
-    rpm --rebuilddb && \
-    yum makecache && yum install -y \
-      http://rpms.remirepo.net/enterprise/remi-release-6.rpm && \
-    yum-config-manager --enable remi-safe remi && \
-    gpg --refresh-keys && \
     \
     printf "Install the redis packages...\n" && \
     yum makecache && yum install -y \
