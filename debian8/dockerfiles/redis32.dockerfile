@@ -82,11 +82,14 @@ ARG app_redis_limit_memory="134217728"
 # Packages
 #
 
+# Refresh the package manager
 # Add foreign repositories and GPG keys
-#  - N/A: for Dotdeb
-# Install redis packages
-#  - redis-server: for redis-server, the Redis data structure server
-#  - redis-tools: for redis-cli, the Redis data structure client
+#  - packages.dotdeb.org: for Dotdeb
+# Install the selected packages
+#   Install the redis packages
+#    - redis-server: for redis-server, the Redis data structure server
+#    - redis-tools: for redis-cli, the Redis data structure client
+# Cleanup the package manager
 RUN printf "Installing repositories and packages...\n" && \
     \
     printf "Install the foreign repositories and refresh the GPG keys...\n" && \
@@ -94,14 +97,16 @@ RUN printf "Installing repositories and packages...\n" && \
 deb http://packages.dotdeb.org jessie all\n\
 \n" > /etc/apt/sources.list.d/dotdeb.list && \
     apt-key adv --fetch-keys http://www.dotdeb.org/dotdeb.gpg && \
-    gpg --refresh-keys && \
+    \
+    printf "Refresh the package manager...\n" && \
+    apt-get update && \
     \
     printf "Install the redis packages...\n" && \
-    apt-get update && apt-get install -qy \
+    apt-get install -qy \
       redis-server redis-tools && \
     \
     printf "Cleanup the package manager...\n" && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* && rm -Rf /var/cache/apt/* && \
     \
     printf "Finished installing repositories and packages...\n";
 
