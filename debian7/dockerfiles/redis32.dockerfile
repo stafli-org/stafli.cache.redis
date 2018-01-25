@@ -178,7 +178,7 @@ RUN printf "Updading Redis configuration...\n" && \
     # change log level \
     perl -0p -i -e "s># warning (only very important / critical messages are logged)\nloglevel .*\n># warning (only very important / critical messages are logged)\nloglevel ${app_redis_loglevel}\n>" ${file} && \
     # disable log file \
-    perl -0p -i -e "s># output for logging but daemonize, logs will be sent to /dev/null\nlogfile ># output for logging but daemonize, logs will be sent to /dev/null\n#logfile >" ${file} && \
+    perl -0p -i -e "s># output for logging but daemonize, logs will be sent to /dev/null\nlogfile .*># output for logging but daemonize, logs will be sent to /dev/null\n#logfile /proc/self/fd/2>" ${file} && \
     # change interface \
     perl -0p -i -e "s># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbind .*\n># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbind ${app_redis_listen_addr}\n>" ${file} && \
     # change port \

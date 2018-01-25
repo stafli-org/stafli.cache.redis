@@ -30,6 +30,7 @@ services:
   cache_redis32_centos7:
     build:
       args:
+        app_redis_loglevel: "verbose"
         app_redis_listen_port: "6379"
         app_redis_listen_timeout: "5"
         app_redis_limit_backlog: "256"
