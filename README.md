@@ -27,18 +27,20 @@ These are the services described by the dockerfile and docker-compose files:
 
 ## Images
 These are the [resulting images](https://hub.docker.com/r/stafli/stafli.cache.redis/tags) upon building:
-- Redis 3.2.x:
-  - stafli/stafli.cache.redis:redis32_debian8
-  - stafli/stafli.cache.redis:redis32_debian7
-  - stafli/stafli.cache.redis:redis32_centos7
-  - stafli/stafli.cache.redis:redis32_centos6
+- Stable:
+  - stafli/stafli.cache.redis:redis32_debian8   [![](https://images.microbadger.com/badges/image/stafli/stafli.cache.redis:redis32_debian8.svg)](https://microbadger.com/images/stafli/stafli.cache.redis:redis32_debian8 "Get your own image badge on microbadger.com")
+  - stafli/stafli.cache.redis:redis32_centos7   [![](https://images.microbadger.com/badges/image/stafli/stafli.cache.redis:redis32_centos7.svg)](https://microbadger.com/images/stafli/stafli.cache.redis:redis32_centos7 "Get your own image badge on microbadger.com")
+- Old Stable:
+  - stafli/stafli.cache.redis:redis32_debian7   [![](https://images.microbadger.com/badges/image/stafli/stafli.cache.redis:redis32_debian7.svg)](https://microbadger.com/images/stafli/stafli.cache.redis:redis32_debian7 "Get your own image badge on microbadger.com")
+  - stafli/stafli.cache.redis:redis32_centos6   [![](https://images.microbadger.com/badges/image/stafli/stafli.cache.redis:redis32_centos6.svg)](https://microbadger.com/images/stafli/stafli.cache.redis:redis32_centos6 "Get your own image badge on microbadger.com")
 
 ## Containers
 These containers can be created from the images:
-- Redis 3.2.x:
+- Stable:
   - stafli_cache_redis32_debian8_xxx
-  - stafli_cache_redis32_debian7_xxx
   - stafli_cache_redis32_centos7_xxx
+- Old Stable:
+  - stafli_cache_redis32_debian7_xxx
   - stafli_cache_redis32_centos6_xxx
 
 ## Usage
